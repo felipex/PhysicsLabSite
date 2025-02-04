@@ -18,6 +18,10 @@ def schedule():
 def courses():
     return render_template('courses.html')
 
+@app.route('/recursos')
+def resources():
+    return render_template('resources.html')
+
 @app.route('/sobre')
 def about():
     return render_template('about.html')
