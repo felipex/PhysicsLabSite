@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <g fill="#003366">
+    <!-- Simplified UFCA logo -->
+    <path d="M30 20h15v60H30zM60 20h15v60H60z"/>
+    <path d="M10 20h80v15H10z"/>
+    <text x="100" y="60" font-family="Arial" font-size="40" font-weight="bold">UFCA</text>
+  </g>
+</svg>
