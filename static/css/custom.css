@@ -343,6 +343,28 @@ a:hover {
     color: var(--icon-success);
 }
 
+/* Loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--body-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.loading-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Science-themed Loading Spinner */
 .atomic-spinner {
     position: relative;
@@ -371,6 +393,7 @@ a:hover {
     height: 100%;
     border: 2px solid rgba(110, 168, 254, 0.1);
     border-radius: 50%;
+    pointer-events: none;
 }
 
 .atomic-spinner .electron {
@@ -379,6 +402,7 @@ a:hover {
     height: 10px;
     background: var(--link-color);
     border-radius: 50%;
+    box-shadow: 0 0 10px var(--link-color);
 }
 
 .atomic-spinner .orbit-1 {
@@ -396,9 +420,9 @@ a:hover {
 }
 
 @keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.2); }
-    100% { transform: translate(-50%, -50%) scale(1); }
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
 }
 
 @keyframes orbit-1 {
@@ -416,24 +440,40 @@ a:hover {
     to { transform: rotate(300deg) translateX(25px) rotate(-300deg); }
 }
 
-/* Loading overlay */
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--body-bg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-}
+/* Mobile adjustments for the spinner */
+@media (max-width: 768px) {
+    .atomic-spinner {
+        width: 120px;  /* Larger on mobile */
+        height: 120px;
+    }
 
-.loading-overlay.show {
-    opacity: 1;
-    visibility: visible;
+    .atomic-spinner .nucleus {
+        width: 30px;   /* Larger nucleus */
+        height: 30px;
+    }
+
+    .atomic-spinner .electron {
+        width: 15px;   /* Larger electrons */
+        height: 15px;
+    }
+
+    .atomic-spinner .electron-orbit {
+        border-width: 3px; /* More visible orbits */
+    }
+
+    /* Adjust orbit radiuses for larger mobile spinner */
+    @keyframes orbit-1 {
+        from { transform: rotate(0deg) translateX(35px) rotate(0deg); }
+        to { transform: rotate(360deg) translateX(35px) rotate(-360deg); }
+    }
+
+    @keyframes orbit-2 {
+        from { transform: rotate(60deg) translateX(35px) rotate(-60deg); }
+        to { transform: rotate(420deg) translateX(35px) rotate(-420deg); }
+    }
+
+    @keyframes orbit-3 {
+        from { transform: rotate(-60deg) translateX(35px) rotate(60deg); }
+        to { transform: rotate(300deg) translateX(35px) rotate(-300deg); }
+    }
 }
