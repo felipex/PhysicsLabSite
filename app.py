@@ -41,5 +41,9 @@ def mcu_mhs():
 def about():
     return render_template('about.html')
 
+@app.route('/calculos')
+def calculations():
+    return render_template('calculations.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
