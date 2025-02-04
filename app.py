@@ -22,6 +22,10 @@ def courses():
 def resources():
     return render_template('resources.html')
 
+@app.route('/simulacoes')
+def simulations():
+    return render_template('simulations.html')
+
 @app.route('/sobre')
 def about():
     return render_template('about.html')
