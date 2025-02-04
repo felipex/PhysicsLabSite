@@ -14,6 +14,7 @@
     --icon-primary: #0d6efd;
     --icon-secondary: #6c757d;
     --icon-success: #198754;
+    --navbar-toggler-color: #212529;
 }
 
 :root[data-bs-theme="dark"] {
@@ -31,6 +32,7 @@
     --icon-primary: #6ea8fe;
     --icon-secondary: #a7acb1;
     --icon-success: #75b798;
+    --navbar-toggler-color: #ffffff;
 }
 
 /* Theme toggle button styles */
@@ -93,6 +95,30 @@ a:hover {
 
 .nav-link:hover, .nav-link.active {
     color: var(--nav-link-hover-color) !important;
+}
+
+/* Navbar toggler specific styles */
+.navbar-toggler {
+    color: var(--navbar-toggler-color) !important;
+    border-color: var(--navbar-toggler-color) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: none !important;
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.navbar-toggler-icon::before {
+    content: '\F479';
+    font-family: bootstrap-icons !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--navbar-toggler-color);
+    font-size: 24px;
 }
 
 /* Card styles */
@@ -303,7 +329,6 @@ a:hover {
 .card:hover .physics-icon {
     transform: scale(1.1);
 }
-
 
 /* Icon variations */
 .physics-icon-primary {
