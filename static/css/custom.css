@@ -11,6 +11,9 @@
     --nav-link-color: rgba(0, 0, 0, 0.65);
     --nav-link-hover-color: rgba(0, 0, 0, 0.9);
     --card-text-color: #212529;
+    --icon-primary: #0d6efd;
+    --icon-secondary: #6c757d;
+    --icon-success: #198754;
 }
 
 :root[data-bs-theme="dark"] {
@@ -25,6 +28,9 @@
     --nav-link-color: rgba(255, 255, 255, 0.65);
     --nav-link-hover-color: rgba(255, 255, 255, 0.9);
     --card-text-color: #e9ecef;
+    --icon-primary: #6ea8fe;
+    --icon-secondary: #a7acb1;
+    --icon-success: #75b798;
 }
 
 /* Theme toggle button styles */
@@ -116,7 +122,6 @@ a:hover {
 :root {
     --header-height: 60px;
 }
-
 
 /* Footer */
 .footer {
@@ -266,4 +271,49 @@ a:hover {
 
 .equation-scroll {
     min-width: 280px;
+}
+
+/* Physics themed icons */
+.physics-icon {
+    color: var(--link-color);
+    font-size: 1.25em;
+    transition: transform 0.2s ease-in-out;
+}
+
+.hero-section .physics-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Card hover effects */
+.card:hover .physics-icon {
+    transform: scale(1.1);
+}
+
+
+/* Icon variations */
+.physics-icon-primary {
+    color: var(--icon-primary);
+}
+
+.physics-icon-secondary {
+    color: var(--icon-secondary);
+}
+
+.physics-icon-success {
+    color: var(--icon-success);
 }
