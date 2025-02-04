@@ -21,6 +21,13 @@
     width: 100%;
     margin-top: 1rem;
 }
+.regression-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 0.5rem;
+    display: none;
+}
 </style>
 {% endblock %}
 
@@ -39,7 +46,7 @@
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="chartType" class="form-label">Tipo de Gráfico</label>
-                                <select class="form-select" id="chartType">
+                                <select class="form-select" id="chartType" onchange="plotData()">
                                     <option value="scatter">Dispersão</option>
                                     <option value="line">Linha</option>
                                     <option value="bar">Barras</option>
@@ -57,6 +64,11 @@
                                 <label for="yAxisLabel" class="form-label">Rótulo Eixo Y</label>
                                 <input type="text" class="form-control" id="yAxisLabel" placeholder="Posição (m)">
                             </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="showRegression" onchange="plotData()">
+                                <label class="form-check-label" for="showRegression">Mostrar Regressão Linear</label>
+                            </div>
+                            <div id="regressionInfo" class="regression-info mb-3"></div>
                             <button class="btn btn-primary" onclick="plotData()">
                                 <i class="bi bi-graph-up me-2"></i>Plotar Dados
                             </button>
@@ -80,6 +92,7 @@
                     <li>Escolha o tipo de gráfico desejado (dispersão, linha ou barras)</li>
                     <li>Insira seus dados no formato CSV (x,y por linha)</li>
                     <li>Adicione rótulos para os eixos X e Y</li>
+                    <li>Ative a regressão linear se desejar analisar a tendência dos dados</li>
                     <li>Clique em "Plotar Dados" para visualizar o gráfico</li>
                 </ol>
                 <div class="alert alert-info">
