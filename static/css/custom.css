@@ -16,8 +16,11 @@
     --icon-success: #198754;
     --navbar-toggler-color: #212529;
     --heading-color: #212529;
+    --hero-text-color: #000000;
+    --hero-subtitle-color: #212529;
 }
 
+/* Dark theme variables */
 :root[data-bs-theme="dark"] {
     --body-bg: #212529;
     --body-color: #ffffff;
@@ -35,52 +38,59 @@
     --icon-success: #75b798;
     --navbar-toggler-color: #ffffff;
     --heading-color: #ffffff;
+    --hero-text-color: #ffffff;
+    --hero-subtitle-color: #e9ecef;
 }
 
-/* Hero section specific styles */
+/* Hero section styles */
 .hero-section {
     padding: 2rem 0;
 }
 
 .hero-section h1,
-.hero-section h2 {
-    color: var(--heading-color);
-}
-
+.hero-section h2,
+.hero-section .h4,
 .hero-section .display-4 {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--heading-color);
+    color: var(--hero-text-color) !important;
 }
 
-.hero-section .h4 {
-    color: var(--heading-color);
-    opacity: 0.8;
+.hero-section .text-muted {
+    color: var(--hero-subtitle-color) !important;
 }
 
-.hero-section .physics-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-    animation: float 3s ease-in-out infinite;
-    color: var(--icon-primary);
+/* Light mode specific hero styles */
+:root[data-bs-theme="light"] .hero-section h1,
+:root[data-bs-theme="light"] .hero-section h2,
+:root[data-bs-theme="light"] .hero-section .h4,
+:root[data-bs-theme="light"] .hero-section .display-4 {
+    color: #000000 !important;
+}
+
+:root[data-bs-theme="light"] .hero-section .text-muted {
+    color: #4a4a4a !important;
 }
 
 /* Card styles */
 .card {
     border: 1px solid var(--card-border);
-    background-color: var(--card-bg);
-    color: var(--card-text-color);
+    background-color: var(--card-bg) !important;
+    color: var(--body-color) !important;
     height: 100%;
     transition: transform 0.2s;
 }
 
-.card-title {
-    color: var(--heading-color);
+/* Light mode specific card styles */
+:root[data-bs-theme="light"] .card {
+    background-color: #ffffff !important;
+    color: #212529 !important;
 }
 
-.card-text {
-    color: var(--card-text-color);
+:root[data-bs-theme="light"] .card-title {
+    color: #000000 !important;
+}
+
+:root[data-bs-theme="light"] .card-text {
+    color: #212529 !important;
 }
 
 .list-group-item {
@@ -349,7 +359,6 @@ a:hover {
     color: var(--icon-success);
 }
 
-
 /* Loading overlay */
 .loading-overlay {
     position: fixed;
@@ -390,6 +399,7 @@ a:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     animation: pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 15px var(--link-color);
 }
 
 .atomic-spinner .electron-orbit {
@@ -398,7 +408,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    border: 2px solid rgba(110, 168, 254, 0.1);
+    border: 2px solid rgba(110, 168, 254, 0.2);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -409,7 +419,7 @@ a:hover {
     height: 10px;
     background: var(--link-color);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--link-color);
+    box-shadow: 0 0 15px var(--link-color);
 }
 
 .atomic-spinner .orbit-1 {
@@ -450,38 +460,42 @@ a:hover {
 /* Mobile adjustments for the spinner */
 @media (max-width: 768px) {
     .atomic-spinner {
-        width: 120px;  /* Larger on mobile */
-        height: 120px;
+        width: 160px;  /* Even larger on mobile */
+        height: 160px;
+        transform: scale(1.2); /* Scale up the entire spinner */
     }
 
     .atomic-spinner .nucleus {
-        width: 30px;   /* Larger nucleus */
-        height: 30px;
+        width: 40px;   /* Larger nucleus */
+        height: 40px;
+        box-shadow: 0 0 20px var(--link-color);
     }
 
     .atomic-spinner .electron {
-        width: 15px;   /* Larger electrons */
-        height: 15px;
+        width: 20px;   /* Larger electrons */
+        height: 20px;
+        box-shadow: 0 0 20px var(--link-color);
     }
 
     .atomic-spinner .electron-orbit {
-        border-width: 3px; /* More visible orbits */
+        border-width: 4px; /* More visible orbits */
+        border-color: rgba(110, 168, 254, 0.3); /* More visible orbit trails */
     }
 
     /* Adjust orbit radiuses for larger mobile spinner */
     @keyframes orbit-1 {
-        from { transform: rotate(0deg) translateX(35px) rotate(0deg); }
-        to { transform: rotate(360deg) translateX(35px) rotate(-360deg); }
+        from { transform: rotate(0deg) translateX(45px) rotate(0deg); }
+        to { transform: rotate(360deg) translateX(45px) rotate(-360deg); }
     }
 
     @keyframes orbit-2 {
-        from { transform: rotate(60deg) translateX(35px) rotate(-60deg); }
-        to { transform: rotate(420deg) translateX(35px) rotate(-420deg); }
+        from { transform: rotate(60deg) translateX(45px) rotate(-60deg); }
+        to { transform: rotate(420deg) translateX(45px) rotate(-420deg); }
     }
 
     @keyframes orbit-3 {
-        from { transform: rotate(-60deg) translateX(35px) rotate(60deg); }
-        to { transform: rotate(300deg) translateX(35px) rotate(-300deg); }
+        from { transform: rotate(-60deg) translateX(45px) rotate(60deg); }
+        to { transform: rotate(300deg) translateX(45px) rotate(-300deg); }
     }
 }
 
