@@ -15,21 +15,21 @@
         .navbar-brand {
             font-weight: 500;
             letter-spacing: 0.5px;
-            color: #003366 !important;
+            color: var(--nav-link-color) !important;
         }
         .nav-link {
             font-weight: 400;
             letter-spacing: 0.3px;
-            color: #003366 !important;
+            color: var(--nav-link-color) !important;
         }
         .nav-link:hover {
-            color: #1450A3 !important;
+            color: var(--nav-link-hover-color) !important;
         }
     </style>
     {% block head %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-white">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="/">
                 <i class="bi bi-atom me-2"></i>
