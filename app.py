@@ -1,10 +1,13 @@
 from flask import Flask, render_template
 import logging
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
+# create the app
 app = Flask(__name__)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY") or "a secret key"
 
 @app.route('/')
 def index():
@@ -33,3 +36,6 @@ def pendulum():
 @app.route('/sobre')
 def about():
     return render_template('about.html')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
