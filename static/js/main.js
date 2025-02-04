@@ -14,7 +14,6 @@ function toggleTheme() {
 }
 
 function announceThemeChange(theme) {
-    // Create and update a live region to announce theme changes
     let announcer = document.getElementById('theme-announcer');
     if (!announcer) {
         announcer = document.createElement('div');
@@ -27,20 +26,28 @@ function announceThemeChange(theme) {
 }
 
 // Loading spinner functionality
-const loadingOverlay = document.querySelector('.loading-overlay');
+let loadingTimeout;
 
 function showLoading() {
+    const loadingOverlay = document.querySelector('.loading-overlay');
     if (loadingOverlay) {
+        clearTimeout(loadingTimeout);
+        loadingOverlay.style.display = 'flex';
         loadingOverlay.classList.add('show');
-        loadingOverlay.setAttribute('aria-busy', 'true');
-        loadingOverlay.setAttribute('aria-label', 'Carregando página');
+        loadingOverlay.setAttribute('aria-hidden', 'false');
     }
 }
 
 function hideLoading() {
+    const loadingOverlay = document.querySelector('.loading-overlay');
     if (loadingOverlay) {
-        loadingOverlay.classList.remove('show');
-        loadingOverlay.setAttribute('aria-busy', 'false');
+        loadingTimeout = setTimeout(() => {
+            loadingOverlay.classList.remove('show');
+            loadingOverlay.setAttribute('aria-hidden', 'true');
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 300);
+        }, 500);
     }
 }
 
@@ -54,14 +61,6 @@ function handleKeyboardNav(event) {
 function handleMouseNav() {
     document.body.classList.remove('keyboard-nav');
 }
-
-// For testing purposes, show loading on navigation
-document.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (link && !link.target && link.href && !link.href.startsWith('#')) {
-        showLoading();
-    }
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize theme
@@ -79,6 +78,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Show loading animation on navigation
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && !link.target && link.href && !link.href.startsWith('#') && !link.href.includes('javascript:')) {
+            showLoading();
+        }
+    });
+
     // Navigation active state
     const currentLocation = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-link');
@@ -90,18 +97,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Initialize all Bootstrap tooltips
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-
     // Set up keyboard navigation
     document.addEventListener('keydown', handleKeyboardNav);
     document.addEventListener('mousedown', handleMouseNav);
 
     // Hide loading spinner after initial page load
-    hideLoading();
+    window.addEventListener('load', hideLoading);
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', () => {
+    showLoading();
 });
 
 // Expose loading functions globally
