@@ -36,20 +36,36 @@
     <div class="col-md-6 calculation-card">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Pêndulo Simples</h3>
+                <h3 class="card-title">
+                    <span data-bs-toggle="tooltip" 
+                          data-bs-placement="top" 
+                          title="Um pêndulo simples é um objeto suspenso que oscila sob a influência da gravidade. É um exemplo perfeito de movimento harmônico simples.">
+                        Pêndulo Simples
+                    </span>
+                </h3>
                 <div id="pendulum-canvas" class="canvas-container"></div>
                 <form id="pendulum-form">
                     <div class="form-group">
-                        <label for="length">Comprimento (m):</label>
+                        <label for="length" data-bs-toggle="tooltip" 
+                               data-bs-placement="right" 
+                               title="O comprimento do pêndulo afeta diretamente seu período de oscilação. Quanto maior o comprimento, maior o período.">
+                            Comprimento (m):
+                        </label>
                         <input type="number" id="length" class="form-control" value="1" min="0.1" max="10" step="0.1">
                     </div>
                     <div class="form-group">
-                        <label for="angle">Ângulo Inicial (graus):</label>
+                        <label for="angle" data-bs-toggle="tooltip" 
+                               data-bs-placement="right" 
+                               title="Para pequenos ângulos (até ~15°), o período é praticamente independente da amplitude. Este é o regime de pequenas oscilações.">
+                            Ângulo Inicial (graus):
+                        </label>
                         <input type="number" id="angle" class="form-control" value="30" min="0" max="90" step="1">
                     </div>
                     <button type="button" class="btn btn-primary" onclick="updatePendulum()">Calcular</button>
                 </form>
-                <div id="pendulum-result" class="result-display">
+                <div id="pendulum-result" class="result-display" data-bs-toggle="tooltip" 
+                     data-bs-placement="bottom" 
+                     title="O período é o tempo necessário para uma oscilação completa. É calculado usando a fórmula T = 2π√(L/g), onde L é o comprimento e g é a aceleração da gravidade.">
                     Período: <span id="period">2.01</span> segundos
                 </div>
             </div>
@@ -60,22 +76,44 @@
     <div class="col-md-6 calculation-card">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Movimento Projetil</h3>
+                <h3 class="card-title">
+                    <span data-bs-toggle="tooltip" 
+                          data-bs-placement="top" 
+                          title="O movimento de projétil combina movimento horizontal uniforme com movimento vertical uniformemente acelerado devido à gravidade, resultando em uma trajetória parabólica.">
+                        Movimento Projetil
+                    </span>
+                </h3>
                 <div id="projectile-canvas" class="canvas-container"></div>
                 <form id="projectile-form">
                     <div class="form-group">
-                        <label for="velocity">Velocidade Inicial (m/s):</label>
+                        <label for="velocity" data-bs-toggle="tooltip" 
+                               data-bs-placement="right" 
+                               title="A velocidade inicial determina o alcance e a altura máxima do projétil. Quanto maior a velocidade, maior será a distância percorrida.">
+                            Velocidade Inicial (m/s):
+                        </label>
                         <input type="number" id="velocity" class="form-control" value="10" min="1" max="50" step="1">
                     </div>
                     <div class="form-group">
-                        <label for="launch-angle">Ângulo de Lançamento (graus):</label>
+                        <label for="launch-angle" data-bs-toggle="tooltip" 
+                               data-bs-placement="right" 
+                               title="Para maximizar o alcance horizontal, o ângulo ideal é 45°. Ângulos maiores resultam em maior altura máxima, mas menor alcance.">
+                            Ângulo de Lançamento (graus):
+                        </label>
                         <input type="number" id="launch-angle" class="form-control" value="45" min="0" max="90" step="1">
                     </div>
                     <button type="button" class="btn btn-primary" onclick="updateProjectile()">Simular</button>
                 </form>
                 <div id="projectile-result" class="result-display">
-                    Alcance: <span id="range">10.0</span> m<br>
-                    Altura Máxima: <span id="max-height">2.5</span> m
+                    <div data-bs-toggle="tooltip" 
+                         data-bs-placement="bottom" 
+                         title="O alcance é a distância horizontal máxima atingida pelo projétil. É máximo para um ângulo de 45° e proporcional ao quadrado da velocidade inicial.">
+                        Alcance: <span id="range">10.0</span> m
+                    </div>
+                    <div data-bs-toggle="tooltip" 
+                         data-bs-placement="bottom" 
+                         title="A altura máxima depende da componente vertical da velocidade inicial. É máxima para um lançamento vertical (90°).">
+                        Altura Máxima: <span id="max-height">2.5</span> m
+                    </div>
                 </div>
             </div>
         </div>

@@ -97,6 +97,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Initialize tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+        new bootstrap.Tooltip(tooltipTriggerEl, {
+            trigger: 'hover focus',  // Show on hover and focus
+            animation: true,         // Enable animation
+            html: true,             // Allow HTML in tooltips
+            delay: {                // Add slight delays for better UX
+                show: 100,
+                hide: 100
+            }
+        });
+    });
+
     // Set up keyboard navigation
     document.addEventListener('keydown', handleKeyboardNav);
     document.addEventListener('mousedown', handleMouseNav);
