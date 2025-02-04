@@ -1,39 +1,39 @@
 /* Theme variables */
 :root[data-bs-theme="light"] {
     --body-bg: #ffffff;
-    --body-color: #333333;
-    --navbar-bg: #003366;
+    --body-color: #212529;
+    --navbar-bg: #ffffff;
     --card-bg: #ffffff;
     --card-border: rgba(0, 0, 0, 0.125);
     --footer-bg: #003366;
-    --link-color: #1450A3;
-    --link-hover-color: #003366;
-    --nav-link-color: rgba(255, 255, 255, 0.9);
-    --nav-link-hover-color: #ffffff;
-    --card-text-color: #333333;
-    --icon-primary: #1450A3;
+    --link-color: #003366;
+    --link-hover-color: #1450A3;
+    --nav-link-color: #003366;
+    --nav-link-hover-color: #1450A3;
+    --card-text-color: #212529;
+    --icon-primary: #003366;
     --icon-secondary: #6c757d;
     --icon-success: #198754;
-    --navbar-toggler-color: #ffffff;
+    --navbar-toggler-color: #003366;
     --heading-color: #003366;
     --hero-text-color: #003366;
-    --hero-subtitle-color: #333333;
+    --hero-subtitle-color: #212529;
 }
 
 /* Dark theme variables - maintaining UFCA's color scheme with dark mode adaptations */
 :root[data-bs-theme="dark"] {
-    --body-bg: #1a1a1a;
-    --body-color: #ffffff;
-    --navbar-bg: #002347;
-    --card-bg: #242424;
+    --body-bg: #212529;
+    --body-color: #f8f9fa;
+    --navbar-bg: #003366;
+    --card-bg: #2c3034;
     --card-border: rgba(255, 255, 255, 0.125);
-    --footer-bg: #002347;
-    --link-color: #4d8ae5;
-    --link-hover-color: #6ea8fe;
+    --footer-bg: #003366;
+    --link-color: #6ea8fe;
+    --link-hover-color: #8bb9fe;
     --nav-link-color: rgba(255, 255, 255, 0.9);
     --nav-link-hover-color: #ffffff;
-    --card-text-color: #e9ecef;
-    --icon-primary: #4d8ae5;
+    --card-text-color: #f8f9fa;
+    --icon-primary: #6ea8fe;
     --icon-secondary: #a7acb1;
     --icon-success: #75b798;
     --navbar-toggler-color: #ffffff;
@@ -59,14 +59,14 @@
 }
 
 /* Light mode specific hero styles */
-::root[data-bs-theme="light"] .hero-section h1,
-::root[data-bs-theme="light"] .hero-section h2,
-::root[data-bs-theme="light"] .hero-section .h4,
-::root[data-bs-theme="light"] .hero-section .display-4 {
+:root[data-bs-theme="light"] .hero-section h1,
+:root[data-bs-theme="light"] .hero-section h2,
+:root[data-bs-theme="light"] .hero-section .h4,
+:root[data-bs-theme="light"] .hero-section .display-4 {
     color: #000000 !important;
 }
 
-::root[data-bs-theme="light"] .hero-section .text-muted {
+:root[data-bs-theme="light"] .hero-section .text-muted {
     color: #4a4a4a !important;
 }
 
@@ -80,16 +80,16 @@
 }
 
 /* Light mode specific card styles */
-::root[data-bs-theme="light"] .card {
+:root[data-bs-theme="light"] .card {
     background-color: #ffffff !important;
     color: #212529 !important;
 }
 
-::root[data-bs-theme="light"] .card-title {
+:root[data-bs-theme="light"] .card-title {
     color: #000000 !important;
 }
 
-::root[data-bs-theme="light"] .card-text {
+:root[data-bs-theme="light"] .card-text {
     color: #212529 !important;
 }
 
@@ -114,8 +114,8 @@
 }
 
 /* Show/hide theme icons based on current theme */
-::root[data-bs-theme="dark"] .theme-icon-light,
-::root[data-bs-theme="light"] .theme-icon-dark {
+:root[data-bs-theme="dark"] .theme-icon-light,
+:root[data-bs-theme="light"] .theme-icon-dark {
     display: none;
 }
 
@@ -186,7 +186,7 @@ a:hover {
 }
 
 /* Custom styles to complement Bootstrap */
-::root {
+:root {
     --header-height: 60px;
 }
 
