@@ -1,0 +1,36 @@
+/* Custom styles to complement Bootstrap */
+.hero-section {
+    padding: 3rem 0;
+    background: var(--bs-dark);
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--bs-dark);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.navbar-brand i {
+    color: var(--bs-info);
+}
+
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .card-img-top {
+        height: 150px;
+    }
+}

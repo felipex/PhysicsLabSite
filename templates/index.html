@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Inicial{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-12">
+        <div class="hero-section text-center mb-5">
+            <h1 class="display-4">Laboratório Didático de Física</h1>
+            <h2 class="h4 text-muted">Prof. João Hermínio</h2>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card bg-dark">
+            <img src="https://images.unsplash.com/photo-1615631648086-325025c9e51e" class="card-img-top" alt="Laboratory Equipment">
+            <div class="card-body">
+                <h3 class="card-title">Bem-vindo ao nosso Laboratório</h3>
+                <p class="card-text">Nosso laboratório oferece uma experiência prática essencial para o aprendizado da física, combinando teoria e experimentação.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title"><i class="bi bi-calendar-event me-2"></i>Próximos Eventos</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Aula Prática de Mecânica - 15/12</li>
+                    <li class="list-group-item">Experimentos de Óptica - 18/12</li>
+                    <li class="list-group-item">Laboratório Aberto - 20/12</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title"><i class="bi bi-info-circle me-2"></i>Avisos</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Manutenção programada - 16/12</li>
+                    <li class="list-group-item">Novos equipamentos disponíveis</li>
+                    <li class="list-group-item">Agendamento para dezembro aberto</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
