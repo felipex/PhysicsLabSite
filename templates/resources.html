@@ -1,10 +1,79 @@
 {% extends "base.html" %}
 {% block title %}Recursos{% endblock %}
 
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/data_plotting.js') }}"></script>
+<style>
+.plotting-container {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+.data-input {
+    resize: vertical;
+    min-height: 100px;
+}
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    margin-top: 1rem;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="row g-4">
     <div class="col-12">
         <h2 class="mb-4">Recursos do Laboratório</h2>
+    </div>
+
+    <!-- Data Plotting Tool -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">
+                    <i class="bi bi-graph-up me-2"></i>
+                    Ferramenta de Plotagem de Dados
+                </h3>
+                <div class="plotting-container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="chartType" class="form-label">Tipo de Gráfico</label>
+                                <select class="form-select" id="chartType">
+                                    <option value="scatter">Dispersão</option>
+                                    <option value="line">Linha</option>
+                                    <option value="bar">Barras</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dataInput" class="form-label">Dados (CSV: x,y por linha)</label>
+                                <textarea class="form-control data-input" id="dataInput" rows="5" placeholder="1.0,2.3&#10;2.0,4.5&#10;3.0,6.7"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="xAxisLabel" class="form-label">Rótulo Eixo X</label>
+                                <input type="text" class="form-control" id="xAxisLabel" placeholder="Tempo (s)">
+                            </div>
+                            <div class="mb-3">
+                                <label for="yAxisLabel" class="form-label">Rótulo Eixo Y</label>
+                                <input type="text" class="form-control" id="yAxisLabel" placeholder="Posição (m)">
+                            </div>
+                            <button class="btn btn-primary" onclick="plotData()">
+                                <i class="bi bi-graph-up me-2"></i>Plotar Dados
+                            </button>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="chart-container">
+                                <canvas id="dataChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="col-md-6">
