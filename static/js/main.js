@@ -11,7 +11,25 @@ function toggleTheme() {
     localStorage.setItem('theme', newTheme);
 }
 
-// Add active class to current navigation item
+// Loading spinner functionality
+const loadingOverlay = document.querySelector('.loading-overlay');
+
+function showLoading() {
+    loadingOverlay.classList.add('show');
+}
+
+function hideLoading() {
+    loadingOverlay.classList.remove('show');
+}
+
+// For testing purposes, show loading on navigation
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (link && !link.target && link.href && !link.href.startsWith('#')) {
+        showLoading();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize theme
     initTheme();
@@ -37,4 +55,11 @@ document.addEventListener('DOMContentLoaded', function() {
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+
+    // Hide loading spinner after initial page load
+    hideLoading();
 });
+
+// Expose loading functions globally
+window.showLoading = showLoading;
+window.hideLoading = hideLoading;
