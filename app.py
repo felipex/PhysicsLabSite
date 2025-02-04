@@ -26,6 +26,10 @@ def resources():
 def simulations():
     return render_template('simulations.html')
 
+@app.route('/simulacoes/pendulo')
+def pendulum():
+    return render_template('pendulum.html')
+
 @app.route('/sobre')
 def about():
     return render_template('about.html')
