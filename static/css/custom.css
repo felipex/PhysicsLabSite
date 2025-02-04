@@ -1,5 +1,6 @@
-/* Theme variables */
+/* Add to the beginning of custom.css */
 :root[data-bs-theme="light"] {
+    /* Existing light theme variables remain unchanged */
     --body-bg: #ffffff;
     --body-color: #212529;
     --navbar-bg: #ffffff;
@@ -18,10 +19,12 @@
     --heading-color: #003366;
     --hero-text-color: #003366;
     --hero-subtitle-color: #212529;
+    --focus-outline-color: #003366;
+    --focus-ring-color: rgba(0, 51, 102, 0.25);
 }
 
-/* Dark theme variables - maintaining UFCA's color scheme with dark mode adaptations */
 :root[data-bs-theme="dark"] {
+    /* Existing dark theme variables remain unchanged */
     --body-bg: #212529;
     --body-color: #f8f9fa;
     --navbar-bg: #003366;
@@ -40,6 +43,44 @@
     --heading-color: #ffffff;
     --hero-text-color: #ffffff;
     --hero-subtitle-color: #e9ecef;
+    --focus-outline-color: #6ea8fe;
+    --focus-ring-color: rgba(110, 168, 254, 0.25);
+}
+
+/* Accessibility Enhancements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Enhanced focus styles */
+*:focus {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--focus-ring-color);
+}
+
+/* Only show focus indicators when using keyboard */
+body:not(.keyboard-nav) *:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* High contrast focus for keyboard navigation */
+.keyboard-nav a:focus,
+.keyboard-nav button:focus,
+.keyboard-nav input:focus,
+.keyboard-nav select:focus,
+.keyboard-nav textarea:focus {
+    outline: 3px solid var(--focus-outline-color);
+    outline-offset: 3px;
 }
 
 /* Hero section styles */
@@ -59,14 +100,14 @@
 }
 
 /* Light mode specific hero styles */
-:root[data-bs-theme="light"] .hero-section h1,
-:root[data-bs-theme="light"] .hero-section h2,
-:root[data-bs-theme="light"] .hero-section .h4,
-:root[data-bs-theme="light"] .hero-section .display-4 {
+::root[data-bs-theme="light"] .hero-section h1,
+::root[data-bs-theme="light"] .hero-section h2,
+::root[data-bs-theme="light"] .hero-section .h4,
+::root[data-bs-theme="light"] .hero-section .display-4 {
     color: #000000 !important;
 }
 
-:root[data-bs-theme="light"] .hero-section .text-muted {
+::root[data-bs-theme="light"] .hero-section .text-muted {
     color: #4a4a4a !important;
 }
 
@@ -80,16 +121,16 @@
 }
 
 /* Light mode specific card styles */
-:root[data-bs-theme="light"] .card {
+::root[data-bs-theme="light"] .card {
     background-color: #ffffff !important;
     color: #212529 !important;
 }
 
-:root[data-bs-theme="light"] .card-title {
+::root[data-bs-theme="light"] .card-title {
     color: #000000 !important;
 }
 
-:root[data-bs-theme="light"] .card-text {
+::root[data-bs-theme="light"] .card-text {
     color: #212529 !important;
 }
 
@@ -114,8 +155,8 @@
 }
 
 /* Show/hide theme icons based on current theme */
-:root[data-bs-theme="dark"] .theme-icon-light,
-:root[data-bs-theme="light"] .theme-icon-dark {
+::root[data-bs-theme="dark"] .theme-icon-light,
+::root[data-bs-theme="light"] .theme-icon-dark {
     display: none;
 }
 

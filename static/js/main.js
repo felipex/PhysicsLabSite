@@ -2,6 +2,7 @@
 function initTheme() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    announceThemeChange(savedTheme);
 }
 
 function toggleTheme() {
@@ -9,17 +10,49 @@ function toggleTheme() {
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-bs-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    announceThemeChange(newTheme);
+}
+
+function announceThemeChange(theme) {
+    // Create and update a live region to announce theme changes
+    let announcer = document.getElementById('theme-announcer');
+    if (!announcer) {
+        announcer = document.createElement('div');
+        announcer.id = 'theme-announcer';
+        announcer.setAttribute('aria-live', 'polite');
+        announcer.setAttribute('class', 'sr-only');
+        document.body.appendChild(announcer);
+    }
+    announcer.textContent = `Tema alterado para ${theme === 'dark' ? 'escuro' : 'claro'}`;
 }
 
 // Loading spinner functionality
 const loadingOverlay = document.querySelector('.loading-overlay');
 
 function showLoading() {
-    loadingOverlay.classList.add('show');
+    if (loadingOverlay) {
+        loadingOverlay.classList.add('show');
+        loadingOverlay.setAttribute('aria-busy', 'true');
+        loadingOverlay.setAttribute('aria-label', 'Carregando página');
+    }
 }
 
 function hideLoading() {
-    loadingOverlay.classList.remove('show');
+    if (loadingOverlay) {
+        loadingOverlay.classList.remove('show');
+        loadingOverlay.setAttribute('aria-busy', 'false');
+    }
+}
+
+// Keyboard navigation enhancement
+function handleKeyboardNav(event) {
+    if (event.key === 'Tab') {
+        document.body.classList.add('keyboard-nav');
+    }
+}
+
+function handleMouseNav() {
+    document.body.classList.remove('keyboard-nav');
 }
 
 // For testing purposes, show loading on navigation
@@ -38,6 +71,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
     }
 
     // Navigation active state
@@ -47,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.forEach(link => {
         if (link.getAttribute('href') === currentLocation) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
         }
     });
 
@@ -55,6 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
+
+    // Set up keyboard navigation
+    document.addEventListener('keydown', handleKeyboardNav);
+    document.addEventListener('mousedown', handleMouseNav);
 
     // Hide loading spinner after initial page load
     hideLoading();

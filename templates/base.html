@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laboratório Didático de Física da UFCA - Recursos e informações para estudantes e pesquisadores">
     <title>Laboratório Didático de Física - {% block title %}{% endblock %}</title>
     <!-- Add favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}">
@@ -33,52 +34,85 @@
         .nav-link:hover {
             color: var(--nav-link-hover-color) !important;
         }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--link-color);
+            color: #fff;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
     </style>
     {% block head %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <nav class="navbar navbar-expand-lg" role="navigation" aria-label="Menu principal">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="{{ url_for('static', filename='img/ufca-logo.svg') }}" alt="UFCA Logo">
+            <a class="navbar-brand" href="/" aria-label="Página inicial do Laboratório Didático de Física">
+                <img src="{{ url_for('static', filename='img/ufca-logo.svg') }}" alt="Logo da UFCA">
                 Laboratório Didático de Física
             </a>
             <div class="d-flex align-items-center">
-                <button class="btn btn-link nav-link px-2 me-3" id="themeToggle" aria-label="Toggle theme">
-                    <i class="bi bi-moon-fill theme-icon-dark"></i>
-                    <i class="bi bi-sun-fill theme-icon-light"></i>
+                <button class="btn btn-link nav-link px-2 me-3" id="themeToggle" aria-label="Alternar tema claro/escuro">
+                    <i class="bi bi-moon-fill theme-icon-dark" aria-hidden="true"></i>
+                    <i class="bi bi-sun-fill theme-icon-light" aria-hidden="true"></i>
                 </button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" 
+                        aria-expanded="false" aria-label="Alternar menu de navegação">
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/"><i class="bi bi-house-fill me-1"></i>Inicial</a>
+                <ul class="navbar-nav ms-auto" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="/" role="menuitem">
+                            <i class="bi bi-house-fill me-1" aria-hidden="true"></i>
+                            <span>Inicial</span>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/agenda"><i class="bi bi-calendar3 me-1"></i>Agenda</a>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="/agenda" role="menuitem">
+                            <i class="bi bi-calendar3 me-1" aria-hidden="true"></i>
+                            <span>Agenda</span>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/disciplinas"><i class="bi bi-book-fill me-1"></i>Disciplinas</a>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="/disciplinas" role="menuitem">
+                            <i class="bi bi-book-fill me-1" aria-hidden="true"></i>
+                            <span>Disciplinas</span>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/recursos"><i class="bi bi-grid-fill me-1"></i>Recursos</a>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="/recursos" role="menuitem">
+                            <i class="bi bi-grid-fill me-1" aria-hidden="true"></i>
+                            <span>Recursos</span>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sobre"><i class="bi bi-info-circle-fill me-1"></i>Sobre</a>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="/sobre" role="menuitem">
+                            <i class="bi bi-info-circle-fill me-1" aria-hidden="true"></i>
+                            <span>Sobre</span>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="container py-4">
+    <main id="main-content" class="container py-4" role="main" tabindex="-1">
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="footer mt-auto py-3">
+    <footer class="footer mt-auto py-3" role="contentinfo">
         <div class="container text-center text-light">
             <span>© 2023 Laboratório Didático de Física - Prof. João Hermínio</span>
         </div>
