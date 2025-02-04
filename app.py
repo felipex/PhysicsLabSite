@@ -33,6 +33,10 @@ def simulations():
 def pendulum():
     return render_template('pendulum.html')
 
+@app.route('/simulacoes/mcu-mhs')
+def mcu_mhs():
+    return render_template('mcu_mhs.html')
+
 @app.route('/sobre')
 def about():
     return render_template('about.html')

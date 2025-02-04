@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}MCU e MHS{% endblock %}
+
+{% block head %}
+<!-- Add MathJax for mathematical equations -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  }
+};
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-12">
+        <h2 class="mb-4">Simulação: MCU e MHS</h2>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="simulation-container">
+                    <iframe 
+                        src="https://editor.p5js.org/felipex/full/viKd6apiy" 
+                        frameborder="0"
+                        title="Simulação de MCU e MHS"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Teoria</h4>
+                <p class="card-text">
+                    O Movimento Circular Uniforme (MCU) e o Movimento Harmônico Simples (MHS) são movimentos relacionados.
+                    A projeção de um MCU sobre um eixo resulta em um MHS.
+                </p>
+
+                <div class="equation-container mt-4">
+                    <h5>Equações do Movimento</h5>
+                    <div class="equation-scroll">
+                        <p>MCU: $$\vec{v} = \omega R$$</p>
+                        <p>MHS: $$x = A\cos(\omega t)$$</p>
+                    </div>
+                    <p class="mt-3">Onde:</p>
+                    <ul class="list-unstyled ps-3">
+                        <li>$\omega$ é a velocidade angular</li>
+                        <li>$R$ é o raio da trajetória circular</li>
+                        <li>$A$ é a amplitude do MHS</li>
+                        <li>$t$ é o tempo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
