@@ -30,52 +30,6 @@
         <h2 class="mb-4">Recursos do Laboratório</h2>
     </div>
 
-    <!-- Data Plotting Tool -->
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">
-                    <i class="bi bi-graph-up me-2"></i>
-                    Ferramenta de Plotagem de Dados
-                </h3>
-                <div class="plotting-container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="chartType" class="form-label">Tipo de Gráfico</label>
-                                <select class="form-select" id="chartType">
-                                    <option value="scatter">Dispersão</option>
-                                    <option value="line">Linha</option>
-                                    <option value="bar">Barras</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="dataInput" class="form-label">Dados (CSV: x,y por linha)</label>
-                                <textarea class="form-control data-input" id="dataInput" rows="5" placeholder="1.0,2.3&#10;2.0,4.5&#10;3.0,6.7"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="xAxisLabel" class="form-label">Rótulo Eixo X</label>
-                                <input type="text" class="form-control" id="xAxisLabel" placeholder="Tempo (s)">
-                            </div>
-                            <div class="mb-3">
-                                <label for="yAxisLabel" class="form-label">Rótulo Eixo Y</label>
-                                <input type="text" class="form-control" id="yAxisLabel" placeholder="Posição (m)">
-                            </div>
-                            <button class="btn btn-primary" onclick="plotData()">
-                                <i class="bi bi-graph-up me-2"></i>Plotar Dados
-                            </button>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="chart-container">
-                                <canvas id="dataChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="col-md-6">
         <div class="card h-100">
             <div class="card-body">
@@ -89,6 +43,11 @@
                     <li class="list-group-item">
                         <a href="/calculos" class="text-decoration-none">
                             <i class="bi bi-calculator me-2"></i>Cálculos Físicos
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/plotagem" class="text-decoration-none">
+                            <i class="bi bi-graph-up me-2"></i>Plotagem de Dados
                         </a>
                     </li>
                     <li class="list-group-item">Vídeos Demonstrativos</li>

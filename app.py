@@ -45,5 +45,9 @@ def about():
 def calculations():
     return render_template('calculations.html')
 
+@app.route('/plotagem')
+def plotting():
+    return render_template('data_plotting.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
