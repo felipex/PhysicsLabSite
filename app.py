@@ -37,6 +37,10 @@ def pendulum():
 def mcu_mhs():
     return render_template('mcu_mhs.html')
 
+@app.route('/scripts')
+def scripts():
+    return render_template('scripts.html')
+
 @app.route('/sobre')
 def about():
     return render_template('about.html')
