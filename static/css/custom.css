@@ -1,3 +1,42 @@
+/* Theme variables */
+:root[data-bs-theme="light"] {
+    --body-bg: #ffffff;
+    --body-color: #212529;
+    --navbar-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.125);
+    --footer-bg: #f8f9fa;
+}
+
+:root[data-bs-theme="dark"] {
+    --body-bg: #212529;
+    --body-color: #ffffff;
+    --navbar-bg: #343a40;
+    --card-bg: #343a40;
+    --card-border: rgba(255, 255, 255, 0.125);
+    --footer-bg: #343a40;
+}
+
+/* Theme toggle button styles */
+#themeToggle {
+    border: none;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    color: var(--body-color);
+    background: transparent;
+    cursor: pointer;
+}
+
+#themeToggle:hover {
+    opacity: 0.8;
+}
+
+/* Show/hide theme icons based on current theme */
+:root[data-bs-theme="dark"] .theme-icon-light,
+:root[data-bs-theme="light"] .theme-icon-dark {
+    display: none;
+}
+
 /* Custom styles to complement Bootstrap */
 :root {
     --header-height: 60px;
@@ -8,6 +47,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--body-bg);
+    color: var(--body-color);
 }
 
 main {
@@ -24,7 +65,7 @@ main {
 /* Card styles */
 .card {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: var(--bs-dark);
+    background-color: var(--card-bg);
     height: 100%;
     transition: transform 0.2s;
 }
@@ -41,6 +82,7 @@ main {
 /* Navigation */
 .navbar {
     min-height: var(--header-height);
+    background-color: var(--navbar-bg) !important;
 }
 
 .navbar-brand i {
@@ -52,6 +94,7 @@ main {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem 0;
     margin-top: auto;
+    background-color: var(--footer-bg) !important;
 }
 
 /* Table responsiveness */
