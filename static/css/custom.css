@@ -6,6 +6,11 @@
     --card-bg: #ffffff;
     --card-border: rgba(0, 0, 0, 0.125);
     --footer-bg: #f8f9fa;
+    --link-color: #0d6efd;
+    --link-hover-color: #0a58ca;
+    --nav-link-color: rgba(0, 0, 0, 0.65);
+    --nav-link-hover-color: rgba(0, 0, 0, 0.9);
+    --card-text-color: #212529;
 }
 
 :root[data-bs-theme="dark"] {
@@ -15,6 +20,11 @@
     --card-bg: #343a40;
     --card-border: rgba(255, 255, 255, 0.125);
     --footer-bg: #343a40;
+    --link-color: #6ea8fe;
+    --link-hover-color: #8bb9fe;
+    --nav-link-color: rgba(255, 255, 255, 0.65);
+    --nav-link-hover-color: rgba(255, 255, 255, 0.9);
+    --card-text-color: #e9ecef;
 }
 
 /* Theme toggle button styles */
@@ -37,11 +47,6 @@
     display: none;
 }
 
-/* Custom styles to complement Bootstrap */
-:root {
-    --header-height: 60px;
-}
-
 /* Base styles */
 body {
     min-height: 100vh;
@@ -55,28 +60,15 @@ main {
     flex: 1;
 }
 
-.hero-section {
-    padding: 2rem 1rem;
-    background: var(--bs-dark);
-    border-radius: 0.5rem;
-    margin-bottom: 2rem;
+/* Links */
+a {
+    color: var(--link-color);
+    text-decoration: none;
 }
 
-/* Card styles */
-.card {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: var(--card-bg);
-    height: 100%;
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card-img-top {
-    height: 200px;
-    object-fit: cover;
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
 }
 
 /* Navigation */
@@ -85,9 +77,46 @@ main {
     background-color: var(--navbar-bg) !important;
 }
 
-.navbar-brand i {
-    color: var(--bs-info);
+.navbar-brand {
+    color: var(--body-color) !important;
 }
+
+.nav-link {
+    color: var(--nav-link-color) !important;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--nav-link-hover-color) !important;
+}
+
+/* Card styles */
+.card {
+    border: 1px solid var(--card-border);
+    background-color: var(--card-bg);
+    color: var(--card-text-color);
+    height: 100%;
+    transition: transform 0.2s;
+}
+
+.card-title {
+    color: var(--body-color);
+}
+
+.card-text {
+    color: var(--card-text-color);
+}
+
+.list-group-item {
+    background-color: var(--card-bg);
+    color: var(--card-text-color);
+    border-color: var(--card-border);
+}
+
+/* Custom styles to complement Bootstrap */
+:root {
+    --header-height: 60px;
+}
+
 
 /* Footer */
 .footer {
