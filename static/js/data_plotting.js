@@ -171,9 +171,33 @@ function downloadChartAsPNG() {
 
 // Function to download chart as SVG
 function downloadChartAsSVG() {
+    // Get the canvas element and its dimensions
     const canvas = document.getElementById('dataChart');
-    const ctx = canvas.getContext('2d');
-    const svgString = new XMLSerializer().serializeToString(ctx.__proto__._svg);
+    const width = canvas.width;
+    const height = canvas.height;
+
+    // Create SVG container
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    svg.setAttribute('width', width);
+    svg.setAttribute('height', height);
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+    // Create image element within SVG
+    const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+    image.setAttribute('width', width);
+    image.setAttribute('height', height);
+    // Get base64 image data from canvas
+    image.setAttribute('href', canvas.toDataURL('image/png'));
+
+    // Add image to SVG
+    svg.appendChild(image);
+
+    // Convert SVG to string
+    const serializer = new XMLSerializer();
+    const svgString = serializer.serializeToString(svg);
+
+    // Create and trigger download
     const blob = new Blob([svgString], {type: 'image/svg+xml'});
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -191,8 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Plot initial data
     plotData();
-    
-    // Add event listeners for download buttons (assuming buttons with ids 'downloadPNG' and 'downloadSVG' exist)
+
+    // Add event listeners for download buttons
     document.getElementById('downloadPNG').addEventListener('click', downloadChartAsPNG);
     document.getElementById('downloadSVG').addEventListener('click', downloadChartAsSVG);
 });
