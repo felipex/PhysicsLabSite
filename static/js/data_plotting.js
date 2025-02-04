@@ -157,10 +157,33 @@ function plotData() {
     };
 
     // Create new chart
-    dataChart = new Chart(ctx, config);
+    dataChart = new Chart(document.getElementById('dataChart').getContext('2d'), config);
 }
 
-// Initialize tooltips when document loads
+// Function to download chart as PNG
+function downloadChartAsPNG() {
+    const canvas = document.getElementById('dataChart');
+    const link = document.createElement('a');
+    link.download = 'grafico.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}
+
+// Function to download chart as SVG
+function downloadChartAsSVG() {
+    const canvas = document.getElementById('dataChart');
+    const ctx = canvas.getContext('2d');
+    const svgString = new XMLSerializer().serializeToString(ctx.__proto__._svg);
+    const blob = new Blob([svgString], {type: 'image/svg+xml'});
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = 'grafico.svg';
+    link.href = url;
+    link.click();
+    window.URL.revokeObjectURL(url);
+}
+
+// Initialize tooltips and chart when document loads
 document.addEventListener('DOMContentLoaded', function() {
     // Add example data to textarea
     const exampleData = "0,0\n1,2.1\n2,4.3\n3,6.2\n4,8.1\n5,10.2";
@@ -168,4 +191,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Plot initial data
     plotData();
+    
+    // Add event listeners for download buttons (assuming buttons with ids 'downloadPNG' and 'downloadSVG' exist)
+    document.getElementById('downloadPNG').addEventListener('click', downloadChartAsPNG);
+    document.getElementById('downloadSVG').addEventListener('click', downloadChartAsSVG);
 });

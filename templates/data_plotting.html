@@ -28,6 +28,9 @@
     border-radius: 0.5rem;
     display: none;
 }
+.btn-group {
+    margin-top: 1rem;
+}
 </style>
 {% endblock %}
 
@@ -72,6 +75,14 @@
                             <button class="btn btn-primary" onclick="plotData()">
                                 <i class="bi bi-graph-up me-2"></i>Plotar Dados
                             </button>
+                            <div class="btn-group mt-3">
+                                <button class="btn btn-outline-secondary" onclick="downloadChartAsPNG()" title="Baixar como PNG">
+                                    <i class="bi bi-download me-2"></i>PNG
+                                </button>
+                                <button class="btn btn-outline-secondary" onclick="downloadChartAsSVG()" title="Baixar como SVG">
+                                    <i class="bi bi-download me-2"></i>SVG
+                                </button>
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <div class="chart-container">
@@ -94,6 +105,7 @@
                     <li>Adicione rótulos para os eixos X e Y</li>
                     <li>Ative a regressão linear se desejar analisar a tendência dos dados</li>
                     <li>Clique em "Plotar Dados" para visualizar o gráfico</li>
+                    <li>Use os botões PNG ou SVG para baixar o gráfico no formato desejado</li>
                 </ol>
                 <div class="alert alert-info">
                     <i class="bi bi-info-circle-fill me-2"></i>
