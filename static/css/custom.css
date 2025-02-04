@@ -1,6 +1,6 @@
 /* Custom styles to complement Bootstrap */
 .hero-section {
-    padding: 3rem 0;
+    padding: 3rem 1rem;
     background: var(--bs-dark);
     border-radius: 0.5rem;
     margin-bottom: 2rem;
@@ -9,6 +9,12 @@
 .card {
     border: 1px solid rgba(255, 255, 255, 0.1);
     background-color: var(--bs-dark);
+    height: 100%;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 .card-img-top {
@@ -22,15 +28,54 @@
 
 .footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+/* Table responsiveness */
+.table-responsive {
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .hero-section {
-        padding: 2rem 0;
+        padding: 2rem 1rem;
     }
-    
+
     .card-img-top {
         height: 150px;
+    }
+
+    .display-4 {
+        font-size: calc(1.375rem + 1.5vw);
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .table th, .table td {
+        min-width: 120px;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .card-img-top {
+        height: 120px;
     }
 }
