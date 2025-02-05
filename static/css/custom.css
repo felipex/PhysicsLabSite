@@ -100,14 +100,14 @@ body:not(.keyboard-nav) *:focus {
 }
 
 /* Light mode specific hero styles */
-::root[data-bs-theme="light"] .hero-section h1,
-::root[data-bs-theme="light"] .hero-section h2,
-::root[data-bs-theme="light"] .hero-section .h4,
-::root[data-bs-theme="light"] .hero-section .display-4 {
+:root[data-bs-theme="light"] .hero-section h1,
+:root[data-bs-theme="light"] .hero-section h2,
+:root[data-bs-theme="light"] .hero-section .h4,
+:root[data-bs-theme="light"] .hero-section .display-4 {
     color: #000000 !important;
 }
 
-::root[data-bs-theme="light"] .hero-section .text-muted {
+:root[data-bs-theme="light"] .hero-section .text-muted {
     color: #4a4a4a !important;
 }
 
@@ -121,16 +121,16 @@ body:not(.keyboard-nav) *:focus {
 }
 
 /* Light mode specific card styles */
-::root[data-bs-theme="light"] .card {
+:root[data-bs-theme="light"] .card {
     background-color: #ffffff !important;
     color: #212529 !important;
 }
 
-::root[data-bs-theme="light"] .card-title {
+:root[data-bs-theme="light"] .card-title {
     color: #000000 !important;
 }
 
-::root[data-bs-theme="light"] .card-text {
+:root[data-bs-theme="light"] .card-text {
     color: #212529 !important;
 }
 
@@ -155,10 +155,22 @@ body:not(.keyboard-nav) *:focus {
 }
 
 /* Show/hide theme icons based on current theme */
-::root[data-bs-theme="dark"] .theme-icon-light,
-::root[data-bs-theme="light"] .theme-icon-dark {
+[data-bs-theme="dark"] .theme-icon-light {
     display: none;
 }
+
+[data-bs-theme="dark"] .theme-icon-dark {
+    display: inline-block;
+}
+
+[data-bs-theme="light"] .theme-icon-light {
+    display: inline-block;
+}
+
+[data-bs-theme="light"] .theme-icon-dark {
+    display: none;
+}
+
 
 /* Base styles */
 body {
