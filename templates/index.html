@@ -1,7 +1,5 @@
-{% extends "base.html" %}
-{% block title %}Inicial{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Inicial{% endblock %} {% block
+content %}
 <div class="row g-4">
     <div class="col-12">
         <div class="hero-section text-center mb-5">
@@ -13,13 +11,27 @@
 
     <div class="col-12">
         <div class="card bg-dark">
-            <img src="https://images.unsplash.com/photo-1615631648086-325025c9e51e" class="card-img-top" alt="Laboratory Equipment">
+            <img
+                id="laboratorio"
+                src="{{ url_for('static', filename='img/laboratorio.jpg') }}"
+                class="card-img-top"
+                alt="Laboratory Equipment"
+            />
             <div class="card-body">
                 <h3 class="card-title">
                     <i class="bi bi-lightbulb-fill me-2 physics-icon"></i>
                     Bem-vindo ao nosso Laboratório
                 </h3>
-                <p class="card-text">Nosso laboratório oferece uma experiência prática essencial para o aprendizado da física, combinando teoria e experimentação.</p>
+                <p class="card-text">
+                    O Laboratório Didático de Física "Professor João Hermínio da
+                    Silva" dispõe de equipamentos utilizados nas disciplinas da
+                    área oferecidas pelo CCT/UFCA. Os materiais didáticos são
+                    desenvolvidos pelos professores, técnicos e alunos e para
+                    isso contam com um pequeno conjunto de ferramentas e
+                    componentes eletrônicos. O laboratório é aberto a todos os
+                    membros da comunidade acadêmica da UFCA, promovendo
+                    interação entre alunos, professores e técnicos.
+                </p>
             </div>
         </div>
     </div>
@@ -34,15 +46,13 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <i class="bi bi-gear-fill me-2"></i>
-                        Aula Prática de Mecânica - 15/12
+                        Não sei se precisa - 01/01/2025
                     </li>
                     <li class="list-group-item">
                         <i class="bi bi-lightning-fill me-2"></i>
-                        Experimentos de Óptica - 18/12
                     </li>
                     <li class="list-group-item">
                         <i class="bi bi-door-open-fill me-2"></i>
-                        Laboratório Aberto - 20/12
                     </li>
                 </ul>
             </div>
@@ -59,15 +69,14 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <i class="bi bi-tools me-2"></i>
-                        Manutenção programada - 16/12
+                        Viagem para caçar exoplanet - 20/03/2025
                     </li>
                     <li class="list-group-item">
                         <i class="bi bi-box-seam-fill me-2"></i>
-                        Novos equipamentos disponíveis
+                        Segunda viagem ...
                     </li>
                     <li class="list-group-item">
                         <i class="bi bi-calendar-check-fill me-2"></i>
-                        Agendamento para dezembro aberto
                     </li>
                 </ul>
             </div>

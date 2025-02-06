@@ -1,7 +1,5 @@
-{% extends "base.html" %}
-{% block title %}Agenda{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Agenda{% endblock %} {% block content
+%}
 <div class="row">
     <div class="col-12">
         <h2 class="mb-4">Agenda do Laboratório</h2>
@@ -10,7 +8,7 @@
     <div class="col-lg-8">
         <div class="card mb-4">
             <div class="card-body">
-                <h3 class="card-title mb-4">Horários Disponíveis</h3>
+                <h3 class="card-title mb-4">Horários das Aulas</h3>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -26,27 +24,35 @@
                         <tbody>
                             <tr>
                                 <td>08:00 - 10:00</td>
-                                <td>Mecânica I</td>
-                                <td>Óptica</td>
-                                <td>Livre</td>
-                                <td>Termodinâmica</td>
-                                <td>Eletromagnetismo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>10:00 - 12:00</td>
-                                <td>Livre</td>
-                                <td>Mecânica II</td>
-                                <td>Óptica</td>
-                                <td>Livre</td>
-                                <td>Física Moderna</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>14:00 - 16:00</td>
-                                <td>Eletromagnetismo</td>
-                                <td>Livre</td>
-                                <td>Mecânica I</td>
-                                <td>Física Moderna</td>
-                                <td>Livre</td>
+                                <td>ECI0078</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>EM0048</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>16:00 - 18:00</td>
+                                <td>ECI0078</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>EM0048</td>
+                                <td>-</td>
                             </tr>
                         </tbody>
                     </table>
@@ -57,16 +63,36 @@
 
     <div class="col-lg-4">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1614308456595-a59d48697ea8" class="card-img-top" alt="Laboratory Equipment">
+            <img
+                src="https://images.unsplash.com/photo-1614308456595-a59d48697ea8"
+                class="card-img-top"
+                alt="Laboratory Equipment"
+            />
             <div class="card-body">
                 <h4 class="card-title">Informações Importantes</h4>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Agendamento com 48h de antecedência</li>
-                    <li class="list-group-item">Máximo de 20 alunos por sessão</li>
-                    <li class="list-group-item">Obrigatório uso de jaleco</li>
-                    <li class="list-group-item">Consulte seu professor para reservas</li>
+                    <li class="list-group-item">
+                        Agendamento com 48h de antecedência
+                    </li>
+                    <li class="list-group-item">
+                        Máximo de 20 alunos por sessão
+                    </li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
                 </ul>
             </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="card">
+            <iframe
+                src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FFortaleza&bgcolor=%23ffffff&hl=pt_BR&src=bGFiZmlzaWNhLmNjdEB1ZmNhLmVkdS5icg&src=Y18yMTY5ZTI4YTRlNjhhZmRhYzBlYjRlZTY4MmZkYTg3NjNhMjg0MDI0ZjUxYWQyODAyMDJjZGI2MzhkMWYzOGE2QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=cHQuYnJhemlsaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%23D50000&color=%230B8043"
+                style="border: solid 1px #777"
+                width="800"
+                height="600"
+                frameborder="0"
+                scrolling="no"
+            ></iframe>
         </div>
     </div>
 </div>

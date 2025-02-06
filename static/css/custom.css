@@ -567,3 +567,7 @@ a:hover {
 .card:hover .physics-icon {
     transform: scale(1.1);
 }
+
+#laboratorio {
+    opacity: 50%;
+}

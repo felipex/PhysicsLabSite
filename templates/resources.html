@@ -1,30 +1,26 @@
-{% extends "base.html" %}
-{% block title %}Recursos{% endblock %}
-
-{% block head %}
+{% extends "base.html" %} {% block title %}Recursos{% endblock %} {% block head
+%}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{{ url_for('static', filename='js/data_plotting.js') }}"></script>
 <style>
-.plotting-container {
-    background: var(--card-bg);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-top: 1rem;
-}
-.data-input {
-    resize: vertical;
-    min-height: 100px;
-}
-.chart-container {
-    position: relative;
-    height: 400px;
-    width: 100%;
-    margin-top: 1rem;
-}
+    .plotting-container {
+        background: var(--card-bg);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    .data-input {
+        resize: vertical;
+        min-height: 100px;
+    }
+    .chart-container {
+        position: relative;
+        height: 400px;
+        width: 100%;
+        margin-top: 1rem;
+    }
 </style>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="row g-4">
     <div class="col-12">
         <h2 class="mb-4">Recursos do Laboratório</h2>
@@ -33,7 +29,9 @@
     <div class="col-md-6">
         <div class="card h-100">
             <div class="card-body">
-                <h4 class="card-title"><i class="bi bi-book-fill me-2"></i>Materiais Didáticos</h4>
+                <h4 class="card-title">
+                    <i class="bi bi-book-fill me-2"></i>Materiais Didáticos
+                </h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <a href="/simulacoes" class="text-decoration-none">
@@ -42,7 +40,9 @@
                     </li>
                     <li class="list-group-item">
                         <a href="/calculos" class="text-decoration-none">
-                            <i class="bi bi-calculator me-2"></i>Cálculos Físicos
+                            <i class="bi bi-calculator me-2"></i>Outros exemplos
+                            de simulações (Feitos por IA só pra testar
+                            &#128513;)
                         </a>
                     </li>
                     <li class="list-group-item">
@@ -51,20 +51,25 @@
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="https://youtube.com/@labfisicaufca?si=OX7V1zCPqjga_Kc1nk" 
-                           class="text-decoration-none" 
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            <i class="bi bi-youtube me-2"></i>Vídeos Demonstrativos
+                        <a
+                            href="https://youtube.com/@labfisicaufca?si=OX7V1zCPqjga_Kc1nk"
+                            class="text-decoration-none"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="bi bi-youtube me-2"></i>Canal do Youtube
                         </a>
                     </li>
                     <li class="list-group-item">
-                        <a href="/scripts" class="text-decoration-none">
-                            <i class="bi bi-file-earmark-code me-2"></i>Scripts das Disciplinas
+                        <a
+                            href="https://drive.google.com/drive/folders/179hP9dAPL_0aRcT0vm1P9O_LdUOubw4T"
+                            class="text-decoration-none"
+                            target="_blank"
+                        >
+                            <i class="bi bi-file-earmark-code me-2"></i>Roteiros
+                            das Aulas
                         </a>
                     </li>
-                    <li class="list-group-item">Guias de Práticas</li>
-                    <li class="list-group-item">Roteiros de Laboratório</li>
                 </ul>
             </div>
         </div>
@@ -73,12 +78,20 @@
     <div class="col-md-6">
         <div class="card h-100">
             <div class="card-body">
-                <h4 class="card-title"><i class="bi bi-tools me-2"></i>Equipamentos Disponíveis</h4>
+                <h4 class="card-title">
+                    <i class="bi bi-tools me-2"></i>Equipamentos Disponíveis
+                </h4>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Kits de Mecânica</li>
+                    <li class="list-group-item">Equipamentos de Mecânica</li>
+                    <li class="list-group-item">
+                        Equipamentos de Termodinâmica
+                    </li>
+                    <li class="list-group-item">
+                        Equipamentos de Eletricidade
+                    </li>
                     <li class="list-group-item">Equipamentos de Óptica</li>
                     <li class="list-group-item">Instrumentos de Medição</li>
-                    <li class="list-group-item">Aparelhos de Eletromagnetismo</li>
+                    <li class="list-group-item">Equipamentos de uso geral</li>
                 </ul>
             </div>
         </div>
@@ -87,29 +100,19 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title"><i class="bi bi-download me-2"></i>Downloads</h4>
+                <h4 class="card-title">
+                    <i class="bi bi-download me-2"></i>Downloads
+                </h4>
                 <div class="row g-4">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <i class="bi bi-file-pdf me-2"></i>
-                                Manual de Segurança do Laboratório
+                                Normas de Utilização do Laboratório
                             </li>
                             <li class="list-group-item">
                                 <i class="bi bi-file-earmark-text me-2"></i>
                                 Formulário de Solicitação de Equipamentos
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <i class="bi bi-file-excel me-2"></i>
-                                Planilhas de Dados
-                            </li>
-                            <li class="list-group-item">
-                                <i class="bi bi-file-pdf me-2"></i>
-                                Normas de Utilização
                             </li>
                         </ul>
                     </div>
