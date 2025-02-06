@@ -27,27 +27,32 @@ function announceThemeChange(theme) {
 
 // Loading spinner functionality
 let loadingTimeout;
+const MAX_LOADING_TIME = 5000; // Maximum time to show loading overlay (5 seconds)
 
 function showLoading() {
     const loadingOverlay = document.querySelector('.loading-overlay');
     if (loadingOverlay) {
         clearTimeout(loadingTimeout);
-        loadingOverlay.style.display = 'flex';
         loadingOverlay.classList.add('show');
+        loadingOverlay.style.display = 'flex';
         loadingOverlay.setAttribute('aria-hidden', 'false');
+        // Automatically hide loading after MAX_LOADING_TIME
+        loadingTimeout = setTimeout(hideLoading, MAX_LOADING_TIME);
     }
 }
 
 function hideLoading() {
     const loadingOverlay = document.querySelector('.loading-overlay');
     if (loadingOverlay) {
-        loadingTimeout = setTimeout(() => {
-            loadingOverlay.classList.remove('show');
-            loadingOverlay.setAttribute('aria-hidden', 'true');
-            setTimeout(() => {
+        clearTimeout(loadingTimeout);
+        loadingOverlay.classList.remove('show');
+        loadingOverlay.setAttribute('aria-hidden', 'true');
+        // Use setTimeout to ensure the transition completes
+        setTimeout(() => {
+            if (!loadingOverlay.classList.contains('show')) {
                 loadingOverlay.style.display = 'none';
-            }, 300);
-        }, 500);
+            }
+        }, 300);
     }
 }
 
@@ -78,11 +83,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Show loading animation on navigation
+    // Show loading animation only on direct link clicks
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a');
-        if (link && !link.target && link.href && !link.href.startsWith('#') && !link.href.includes('javascript:')) {
-            showLoading();
+        // Only show loading for forward navigation clicks
+        if (link && 
+            !link.target && 
+            link.href && 
+            !link.href.startsWith('#') && 
+            !link.href.includes('javascript:') &&
+            link.href.startsWith(window.location.origin)) {
+                showLoading();
         }
     });
 
@@ -101,10 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.forEach(function (tooltipTriggerEl) {
         new bootstrap.Tooltip(tooltipTriggerEl, {
-            trigger: 'hover focus',  // Show on hover and focus
-            animation: true,         // Enable animation
-            html: true,             // Allow HTML in tooltips
-            delay: {                // Add slight delays for better UX
+            trigger: 'hover focus',
+            animation: true,
+            html: true,
+            delay: {
                 show: 100,
                 hide: 100
             }
@@ -115,15 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', handleKeyboardNav);
     document.addEventListener('mousedown', handleMouseNav);
 
-    // Hide loading spinner after initial page load
-    window.addEventListener('load', hideLoading);
-});
-
-// Handle browser back/forward buttons
-window.addEventListener('popstate', (event) => {
-    showLoading();
-    // Hide loading after the page content has loaded
-    window.addEventListener('load', hideLoading, { once: true });
+    // Hide loading spinner immediately after initial page load
+    hideLoading();
 });
 
 // Expose loading functions globally
