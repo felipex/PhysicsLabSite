@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Recursos Externos{% endblock %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-12">
+        <h2 class="mb-4">Recursos Externos</h2>
+        <p class="lead">Uma coleção de recursos educacionais externos úteis para o estudo de física.</p>
+    </div>
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <i class="bi bi-globe me-2"></i>Simulações e Recursos Interativos
+                </h4>
+                <div class="list-group mt-3">
+                    <a href="https://phet.colorado.edu/pt_BR/simulations/filter?subjects=physics" 
+                       class="list-group-item list-group-item-action" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <h5 class="mb-1"><i class="bi bi-box-arrow-up-right me-2"></i>PhET Interactive Simulations</h5>
+                        <p class="mb-1">Simulações interativas de física da Universidade do Colorado. Recursos gratuitos e de alta qualidade para aprendizado de física.</p>
+                    </a>
+                    
+                    <a href="https://www.sbfisica.org.br/" 
+                       class="list-group-item list-group-item-action" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <h5 class="mb-1"><i class="bi bi-box-arrow-up-right me-2"></i>Sociedade Brasileira de Física (SBF)</h5>
+                        <p class="mb-1">Portal da SBF com recursos educacionais, publicações e eventos relacionados à física no Brasil.</p>
+                    </a>
+
+                    <a href="https://seara.ufc.br/" 
+                       class="list-group-item list-group-item-action" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <h5 class="mb-1"><i class="bi bi-box-arrow-up-right me-2"></i>SEARA da Ciência - UFC</h5>
+                        <p class="mb-1">Espaço de divulgação científica da Universidade Federal do Ceará, com experimentos, vídeos e materiais didáticos.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

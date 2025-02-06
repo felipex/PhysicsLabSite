@@ -30,6 +30,11 @@ def resources():
     return render_template('resources.html')
 
 
+@app.route('/recursos-externos')
+def external_resources():
+    return render_template('external_resources.html')
+
+
 @app.route('/simulacoes')
 def simulations():
     return render_template('simulations.html')
