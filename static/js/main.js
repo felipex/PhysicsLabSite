@@ -120,8 +120,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Handle browser back/forward buttons
-window.addEventListener('popstate', () => {
+window.addEventListener('popstate', (event) => {
     showLoading();
+    // Hide loading after the page content has loaded
+    window.addEventListener('load', hideLoading, { once: true });
 });
 
 // Expose loading functions globally
